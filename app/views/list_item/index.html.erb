@@ -1,0 +1,20 @@
+
+<div class="todo">
+
+    <% if @list_items.empty? %> 
+        <h4 class="text-primary">You have no items to complete.</h4>
+    <% else %>
+        <ol>
+            <% @list_items.each do |list_item| %>
+            <li class='text-primary'>  
+                <%= link_to list_item.title, list_item_path(list_item) %>
+                <span> --- </span>
+                <%= link_to 'Edit', edit_list_item_path(list_item) %>
+                <span> --- </span>
+                <%= link_to('Delete', list_item_path(list_item), method: :delete) %>
+            </li>
+        <% end %>
+        </ol>
+    <% end %>
+    <%= link_to 'Create New Item', new_list_item_path %>
+</div>
